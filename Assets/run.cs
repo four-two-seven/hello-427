@@ -4,32 +4,50 @@ using UnityEngine;
 
 public class run : MonoBehaviour
 {
+    private Rigidbody2D m_Rigidbody2D;
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<Transform>().localPosition = new Vector3(0, 0, 0);
+        m_Rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //transform.localPosition += new Vector3(2.5f, 0, 0) * Time.deltaTime;
 
-        if (Input.GetKey(KeyCode.RightArrow)) 
+
+        if (Input.GetKey(KeyCode.RightArrow))
         {
-            transform.localPosition += new Vector3(1, 0, 0) * Time.deltaTime;
+            m_Rigidbody2D.velocity = new Vector2(3, 0);
         }
-        if (Input.GetKey(KeyCode.LeftArrow)) 
+        if (Input.GetKey(KeyCode.LeftArrow))
         {
-            transform.localPosition += new Vector3(-1, 0, 0) * Time.deltaTime;
+            m_Rigidbody2D.velocity = new Vector2(-3, 0);
         }
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            transform.localPosition += new Vector3(0, 1, 0) * Time.deltaTime;
+            m_Rigidbody2D.velocity = new Vector2(0, 3);
         }
         if (Input.GetKey(KeyCode.DownArrow))
         {
-            transform.localPosition += new Vector3(0, -1, 0) * Time.deltaTime;
+            m_Rigidbody2D.velocity = new Vector2(0, -3);
+        }
+
+        if (Input.GetKeyUp(KeyCode.RightArrow))
+        {
+            m_Rigidbody2D.velocity = new Vector2(0, 0);
+        }
+        if (Input.GetKeyUp(KeyCode.LeftArrow))
+        {
+            m_Rigidbody2D.velocity = new Vector2(0, 0);
+        }
+        if (Input.GetKeyUp(KeyCode.UpArrow))
+        {
+            m_Rigidbody2D.velocity = new Vector2(0, 0);
+        }
+        if (Input.GetKeyUp(KeyCode.DownArrow))
+        {
+            m_Rigidbody2D.velocity = new Vector2(0, 0);
         }
     }
 }
